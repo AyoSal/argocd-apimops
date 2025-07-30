@@ -1,0 +1,56 @@
+# httpbin-core.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: http
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: httpbin
+  namespace: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpbin
+  namespace: http
+  labels:
+    app: httpbin
+    service: httpbin
+spec:
+  # Using ClusterIP instead of LoadBalancer type, as the traffic will come from the Gateway API
+  # The original Service type LoadBalancer would create a separate GCP Load Balancer for the service itself,
+  # which is not needed when using Gateway API for external exposure.
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: httpbin
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpbin
+  namespace: http
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: httpbin
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: httpbin
+        version: v1
+    spec:
+      serviceAccountName: httpbin
+      containers:
+        - image: docker.io/kennethreitz/httpbin
+          imagePullPolicy: IfNotPresent
+          name: httpbin
+          ports:
+            - containerPort: 80
