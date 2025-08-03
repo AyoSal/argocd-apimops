@@ -16,5 +16,5 @@ userName:
   "{ .Values.developerName }": null
 status: active
 attributes:
-  - name: team
+  - name: "environment"
 value: "{ .Values.envName }": null
