@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: ApigeeDeveloperApp
+metadata: null
+name:
+  "{ .Values.developerAppName }": null
+namespace:
+  "{ .Values.apimNamespace }": null
+spec: null
+organization:
+  "{ .Values.projectID }": null
+developerEmail:
+  "{ .Values.developerEmail }": null
+displayName:
+  "{ .Values.developerAppName }": null
+apiProducts:
+  - name:
+      "{ .Values.productName }": null
+status: approved
+
+attributes:
+  - name: environment
+value: "{ .Values.apigeeEnvironment }"
