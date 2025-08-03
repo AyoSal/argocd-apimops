@@ -20,4 +20,4 @@ status: approved
 
 attributes:
   - name: environment
-value: "{ .Values.apigeeEnvironment }"
+value: "{ .Values.envName }"
