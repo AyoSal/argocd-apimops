@@ -1,0 +1,14 @@
+apiVersion: apim.googleapis.com/v1
+kind: APIMExtensionPolicy
+metadata:
+  name: global-ext-lb1-apim-policy
+  namespace: apim
+spec:
+  location: global
+  failOpen: false
+  timeout: 1000ms
+  defaultSecurityEnabled: true
+  targetRef: # identifies the Gateway where the extension must be applied
+    name: global-ext-lb1
+    kind: Gateway
+    namespace: default
