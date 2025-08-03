@@ -1,0 +1,5 @@
+apiVersion: v2
+name: apigee-resources
+description: A Helm chart for deploying Apigee Developer and Developer App resources.
+version: 0.1.0
+appVersion: "1.0"
