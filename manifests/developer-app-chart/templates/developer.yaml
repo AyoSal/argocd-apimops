@@ -17,4 +17,4 @@ userName:
 status: active
 attributes:
   - name: team
-value: engineering
+value: "{ .Values.envName }"
