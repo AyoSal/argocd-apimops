@@ -15,6 +15,7 @@ lastName: Sample User
 userName:
   "{ .Values.developerName }": null
 status: active
+
 attributes:
-  - name: "environment"
-value: "{ .Values.envName }": null
+  - name: environment
+value: "{ .Values.envName }"
