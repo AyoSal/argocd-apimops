@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: ApigeeDeveloper
+metadata: null
+name:
+  "{ .Values.developerName }": null
+namespace:
+  "{ .Values.apimNamespace }": null
+spec: null
+organization:
+  "{ .Values.projectID }": null
+firstName:
+  "{ .Values.developerName }": null
+lastName: Sample User
+userName:
+  "{ .Values.developerName }": null
+status: active
+attributes:
+  - name: team
+value: engineering
