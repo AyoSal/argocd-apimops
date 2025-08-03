@@ -1,0 +1,47 @@
+#API Product
+apiVersion: apim.googleapis.com/v1
+kind: APIProduct
+metadata:
+  name: api-product
+  namespace: apim
+spec:
+  approvalType: auto
+  description: Http bin GET calls for demo
+  displayName: api-product
+  enforcementRefs:
+    - name: global-ext-lb1-apim-policy
+      kind: APIMExtensionPolicy
+      group: apim.googleapis.com
+      namespace: apim
+  attributes:
+    - name: access
+      value: private
+---
+
+
+# Create Operation Set
+---
+apiVersion: apim.googleapis.com/v1
+kind: APIOperationSet
+metadata:
+  name: item-set
+  namespace: apim
+spec:
+  apiProductRefs:
+    - name: api-product
+      kind: APIProduct
+      group: apim.googleapis.com
+      namespace: apim
+  quota:
+    limit: 10
+    interval: 1
+    timeUnit: minute
+  restOperations:
+    - name: GetItems
+      path: /get
+      methods:
+        - GET
+    - name: GetOtherItems
+      path: /headers
+      methods:
+        - GET
