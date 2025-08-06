@@ -1,4 +1,4 @@
-apiVersion: apigeedevelopers.apim-enabled-dep-env-group-1.svc.google.com/v1alpha1
+apiVersion: apigeedevelopers.apim-enabled-dep-env-group-1.svc.google.com/v1beta1
 kind: ApigeeDeveloper
 metadata:
   name: apim-developer
