@@ -1,0 +1,55 @@
+# templates/apigeedeveloper-crd.yaml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: apigeedevelopers.apim-enabled-dep-env-group-1.svc.google.com
+spec:
+  group: apim-enabled-dep-env-group-1.svc.google.com
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                userName:
+                  type: string
+                  description: The username for the Apigee developer.
+                email:
+                  type: string
+                  description: The email address of the Apigee developer.
+                firstName:
+                  type: string
+                  description: The first name of the Apigee developer.
+                lastName:
+                  type: string
+                  description: The last name of the Apigee developer.
+                organization:
+                  type: string
+                  description: The Apigee organization to create the developer in.
+                attributes:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      value:
+                        type: string
+              required:
+                - userName
+                - email
+                - firstName
+                - lastName
+                - organization
+  scope: Namespaced
+  names:
+    plural: apigeedevelopers
+    singular: apigeedeveloper
+    kind: ApigeeDeveloper
+    shortNames:
+      - apidev
