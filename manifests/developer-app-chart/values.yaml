@@ -1,8 +1,0 @@
----
-projectID: dynolab-integration
-apimNamespace: apim
-envName: apim-enabled-dep-env-1
-developerName: myapim-dev
-developerAppName: myapim-app
-productName: api-product
-developerEmail: myapimdev@apimoperator.com
