@@ -1,4 +1,4 @@
-apiVersion: apigee.example.com/v1alpha1
+apiVersion: v1beta1
 kind: ApigeeDeveloper
 metadata:
   name: apim-developer
