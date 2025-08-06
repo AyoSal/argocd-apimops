@@ -1,0 +1,16 @@
+apiVersion: apigee.example.com/v1alpha1
+kind: ApigeeDeveloper
+metadata:
+  name: apim-developer
+  namespace: argocd  
+spec:
+  userName: apim-dev  
+  email: apim-developer@acme.com
+  firstName: apim  
+  lastName: developer
+  organization: dynolab-integration
+  attributes:
+    - name: environment
+      value: apim-enabled-dep-env-1
+    - name: status
+      value: active
