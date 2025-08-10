@@ -1,0 +1,39 @@
+apiVersion: apim.gcp.io/v1alpha1 # Consistent API version with ApigeeDeveloper
+kind: ApigeeApp
+metadata:
+  name: my-first-apigee-app # Unique name for your Kubernetes ApigeeApp resource
+  namespace: default # The Kubernetes namespace where this resource will be deployed
+spec:
+  # The email of the Apigee developer this app belongs to.
+  # This developer must already exist in Apigee (e.g., created by an ApigeeDeveloper CR).
+  developerEmail: apim-developer@acme.com # Link to the developer created previously
+
+  # A user-friendly display name for the app in the Apigee UI.
+  displayName: "My Awesome API Client App"
+
+  # (Optional) Callback URL for OAuth flows.
+  callbackUrl: "https://myclientapp.example.com/oauth/callback"
+
+  # List of Apigee API Products that this app is associated with.
+  # These products must exist in your Apigee organization.
+  apiProducts:
+    - "my-product-gold" # Replace with your actual API Product names
+    - "my-product-silver"
+
+  # (Optional) Expiration for the API key generated for this app.
+  # Format is a duration string (e.g., "1h", "30d", "1y"). If omitted, usually never expires.
+  # keyExpiresIn: "365d" # Example: Key expires in 365 days
+
+  # (Optional) Custom attributes for the Apigee app.
+  # These are key-value pairs that can store additional metadata.
+  attributes:
+    - name: clientType
+      value: "web"
+    - name: environment
+      value: "production"
+    - name: team
+      value: "frontend"
+
+  # (Optional) Status of the application (e.g., "approved", "revoked").
+  # If omitted, it often defaults to "approved" or requires manual approval in Apigee.
+  status: "approved"
