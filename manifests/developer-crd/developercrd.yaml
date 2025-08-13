@@ -18,11 +18,11 @@ spec:
               email:
                 type: string
               firstName:
-                type: boolean
+                type: string
               lastName:
                 type: string
               userName:
-                type: boolean
+                type: string
               status:
                 type: string
               attributes:
