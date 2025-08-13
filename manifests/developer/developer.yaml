@@ -1,0 +1,9 @@
+apiVersion: apigee.googleapis.com/v1
+kind: Developer
+metadata:
+  name: dev-1
+spec:
+  email: dev-1@google.com
+  firstName: devFN-1
+  lastName: devLN-1
+  userName: dev-1
