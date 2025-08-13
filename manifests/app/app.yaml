@@ -1,0 +1,12 @@
+apiVersion: apigee.googleapis.com/v1
+kind: App
+metadata:
+  name: apimapp
+spec:
+  apiProducts:
+  - api-product
+  developerEmail: dev@apim.com
+  attributes:
+  - name: country
+    value: usa
+  name: app
