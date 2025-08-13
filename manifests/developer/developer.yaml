@@ -1,9 +1,9 @@
 apiVersion: apigee.googleapis.com/v1
 kind: Developer
 metadata:
-  name: apimop-dev
+  name: apimopdev
 spec:
-  email: dev@apim-op.com
-  firstName: developer
-  lastName: developer
-  userName: devel
+  email: dev@apim.com
+  firstName: devel
+  lastName: oper
+  userName: deve
