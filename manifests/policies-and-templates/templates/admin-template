@@ -1,0 +1,50 @@
+# new-admin-template.yaml
+apiVersion: apim.googleapis.com/v1
+kind: ApimTemplate
+metadata:
+  name: new-admin-template
+  namespace: apim
+spec:
+  apimTemplateRule:
+    group: apim.googleapis.com
+    kind: ApimTemplateRule
+    name: template-rule
+    namespace: apim
+  templates:
+  - mode: REQUEST
+    flows:
+    - name: preflow
+      policies:
+      - group: apim.googleapis.com
+        kind: OASValidation
+        name: oas-validation-1
+        namespace: apim
+      - group: apim.googleapis.com
+        kind: SpikeArrest
+        name: spike-arrest
+        namespace: apim
+    - name: ConditionalGetFlow
+      policies:
+      - group: apim.googleapis.com
+        kind: Javascript
+        name: js-add-headers
+        namespace: apim
+      condition: request.verb="GET"
+    - name: postflow
+      policies:
+      - group: apim.googleapis.com
+        kind: AssignMessage
+        name: google-token-policy
+        namespace: apim
+      - group: apim.googleapis.com
+        kind: ServiceCallout
+        name: service-callout-1
+        namespace: apim
+  - mode: RESPONSE
+    flows:
+    - name: postflow
+      policies:
+      - group: apim.googleapis.com
+        kind: KVM
+        name: kvm-1
+        namespace: apim
