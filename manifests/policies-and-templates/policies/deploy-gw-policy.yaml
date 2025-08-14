@@ -5,7 +5,7 @@ metadata:
   name: apim-template-injection
   namespace: apim
 spec:
-  serviceAccount: apigee-apim-gsa@PROJECT_ID.iam.gserviceaccount.com
+  serviceAccount: apigee-apim-gsa@dynolab-integration.iam.gserviceaccount.com
   ref:
     group: apim.googleapis.com
     kind: ApimTemplate
