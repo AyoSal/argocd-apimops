@@ -1,0 +1,10 @@
+# template-rule.yaml
+apiVersion: apim.googleapis.com/v1
+kind: ApimTemplateRule
+metadata:
+  name: template-rule
+  namespace: apim
+spec:
+  allowList: [SpikeArrest, Javascript, GenerateJWT, KVM, OASValidation, OAuthv2, ServiceCallout]
+  requiredList: [AssignMessage]
+  denyList: []
