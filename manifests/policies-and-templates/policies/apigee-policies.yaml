@@ -19,9 +19,9 @@ metadata:
 spec:
   timeLimit: 2000
   source: |
-    var sum = 1+1;
-    context.setVariable("request.header.first", 1);
-    context.setVariable("request.header.second", 1);
+    var sum = 10+1000;
+    context.setVariable("request.header.first", 10);
+    context.setVariable("request.header.second", 1000);
     context.setVariable("request.header.sum", sum);
 ---
 apiVersion: apim.googleapis.com/v1
