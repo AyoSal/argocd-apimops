@@ -1,4 +1,3 @@
-# argocd-apimops
 
 
 # Deploy Apigee Apim Operator with ArgoCD Automation
