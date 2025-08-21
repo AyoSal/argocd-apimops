@@ -32,4 +32,46 @@ Start by setting required variables,  installing your GKE cluster and creating t
 Run scripts 1,2 and 3 from this [repo](https://github.com/AyoSal/apim-operator)
 
 
-Service account needs to have service account user permission as well to be able to deploy policies to proxy in Apigee
+
+# Setup ArgoCD in your GKE Cluster
+
+Create the ArgoCD namespace 
+```
+  kubectl create ns argocd
+```
+
+Install ArgoCD into your cluster
+```
+ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+
+
+Patch Argocd service from ClusterIP to loadbalancer 
+```
+kubectl -n argocd patch svc argocd-server --type='json' -p '[{"op":"replace","path":"/spec/type","value":"LoadBalancer"}]'
+```
+
+Download the ArgoCD biinary by followng steps at this [page[(https://github.com/argoproj/argo-cd/releases/tag/v2.9.2) based on your operating system. 
+Once ArgoCD is installed proceed to the next step.
+
+Retrieve the initial password for Argo cd with -
+
+```
+ argocd admin initial-password -n argocd
+```
+
+Retrieve the external IP of the ArgoCD service and use that to log into the ArgoCD UI with the initial password received above, change this password to one of your choice. 
+
+Re-login with your new password.
+
+Click on settings tile and connect to git repo. Create repositories required for ArgoCD to pull the helm charts of the components as shown below, 
+
+
+![Image of screenshot](/media/repo-setup.png)
+
+
+For connecting the gitHub repo to ArgoCD, you may need to generate ssh keys and share between github and ArgoCD.
+Once the repo is created successfully, you will see a green tick as shown below.
+
+![Image of screenshot](/media/argocd-repos.png)
+
