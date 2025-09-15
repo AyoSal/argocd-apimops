@@ -9,7 +9,7 @@ spec:
       name: global-ext-bin
       namespace: default
   hostnames:
-    - "nip.io"
+    - "34.8.202.173.nip.io"
   rules:
     - matches:
         - path:
