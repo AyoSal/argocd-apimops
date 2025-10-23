@@ -114,5 +114,10 @@ Images >>> shwo obkjects created in apigee.. api product, environment, env group
 it may take a while for these changes to reflect in argocd application so may be worth doing a re-sync after a while.
 
 
+After the phaes 1 is done, create an Apigee application and apigee developer in the apigee ui and link them to the api product created earlier
+
+Last step is to creat the phase 2 application in argocd which contains the template-rule, admin template and some apigee policy templates
+
+after this is done you can now begin some testing as shown in the links below.
 
  
