@@ -111,7 +111,7 @@ kubectl logs  apigee-apim-operator-7b98fdd44d-9blsk -n apim | grep "\"status\": 
 
 Images >>> shwo obkjects created in apigee.. api product, environment, env group, sharedflow proxy.
 
-
+it may take a while for these changes to reflect in argocd application so may be worth doing a re-sync after a while.
 
 
 
