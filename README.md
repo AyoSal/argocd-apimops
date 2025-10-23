@@ -101,10 +101,18 @@ Image >> override file reference
 
 The operator and other components my take a while to create, to confirm its all created use the below command to confirm its in running status as below.
 
+
+Next step is to create a group of objects we consider as phase1 objects which will create the api product, api operation set and apim extension policy objects.
+
+you can run following command to confirm when the apim extension policy gets into runnign state.
+
 kubectl logs  apigee-apim-operator-7b98fdd44d-9blsk -n apim | grep "\"status\": \"RUNNING\""
 
 
+Images >>> shwo obkjects created in apigee.. api product, environment, env group, sharedflow proxy.
 
-To confirm the o
+
+
+
 
  
