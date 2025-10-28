@@ -79,44 +79,53 @@ Next start with the apim operator crds
 
 create an application in ArgoCD as shown in the image
 
-image >>> argocd applicatoin for crds yaml view 
-
+image >>> argocd application for crds yaml view 
+![Image of screenshot](/media/argocd-application-crds-yaml.png)
 
 Once saved, go to the ArgoCD applicatoins view and create the crds by clicking on the sync button to trigger the creation of the crds, the application should show sync ok as below
 
 image >>> argocd app sync ok..
-
+![Image of screenshot](/media/argocd-crd-app-sync.png)
 
 Next will be to create the gateway and httproute and httpbin backend applications.
  Image >> argocd application for gateway httproute and httpbin
-
+![Image of screenshot](/media/argocd-gw-httproute-app.png)
 
 
  Next create the apim operator application which will create some  kubernetes objects for the operator such as operator cluster role, kubernetes service account, kubernetes pod all for the operator, 
-It is worth mentioning that the operator does require some values to be cofnigured as override values such as project, apigee org and service account to be used.
+It is worth mentioning that the operator does require some values to be configured as override values such as project, apigee org and service account to be used.
 Image >> override file reference 
+![Image of screenshot](/media/operatorwithoverrides.png)
 
- Image >> showing argocd operator application strucutre view
-
+ Image >> showing argocd operator application structure view
+![Image of screenshot](/media/argocd-operator-app-structure-complete.png)
 
 The operator and other components my take a while to create, to confirm its all created use the below command to confirm its in running status as below.
 
-
 Next step is to create a group of objects we consider as phase1 objects which will create the api product, api operation set and apim extension policy objects.
 
-you can run following command to confirm when the apim extension policy gets into runnign state.
+![Image of screenshot](/media/phase1-app.png)
 
+you can run following command to confirm when the apim extension policy gets into running state.
+
+```
 kubectl logs  apigee-apim-operator-7b98fdd44d-9blsk -n apim | grep "\"status\": \"RUNNING\""
+```
 
+Images >>> show objects created in apigee.. api product, environment, env group, sharedflow proxy.
+![Image of screenshot](/media/operatorwithoverrides.png)
 
-Images >>> shwo obkjects created in apigee.. api product, environment, env group, sharedflow proxy.
 
 it may take a while for these changes to reflect in argocd application so may be worth doing a re-sync after a while.
 
 
 After the phaes 1 is done, create an Apigee application and apigee developer in the apigee ui and link them to the api product created earlier
 
+
 Last step is to creat the phase 2 application in argocd which contains the template-rule, admin template and some apigee policy templates
+![Image of screenshot](/media/all-apps-phase1-2.png)
+
+
 
 after this is done you can now begin some testing as shown in the links below.
 
