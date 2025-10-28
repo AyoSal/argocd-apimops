@@ -79,25 +79,22 @@ Next start with the apim operator crds
 
 create an application in ArgoCD as shown in the image
 
-image >>> argocd application for crds yaml view 
 ![Image of screenshot](/media/argocd-application-crds-yaml.png)
 
 Once saved, go to the ArgoCD applicatoins view and create the crds by clicking on the sync button to trigger the creation of the crds, the application should show sync ok as below
 
-image >>> argocd app sync ok..
 ![Image of screenshot](/media/argocd-crd-app-sync.png)
 
 Next will be to create the gateway and httproute and httpbin backend applications.
- Image >> argocd application for gateway httproute and httpbin
+ 
 ![Image of screenshot](/media/argocd-gw-httproute-app.png)
 
 
  Next create the apim operator application which will create some  kubernetes objects for the operator such as operator cluster role, kubernetes service account, kubernetes pod all for the operator, 
 It is worth mentioning that the operator does require some values to be configured as override values such as project, apigee org and service account to be used.
-Image >> override file reference 
+
 ![Image of screenshot](/media/operatorwithoverrides.png)
 
- Image >> showing argocd operator application structure view
 ![Image of screenshot](/media/argocd-operator-app-structure-complete.png)
 
 The operator and other components my take a while to create, to confirm its all created use the below command to confirm its in running status as below.
@@ -112,7 +109,6 @@ you can run following command to confirm when the apim extension policy gets int
 kubectl logs  apigee-apim-operator-7b98fdd44d-9blsk -n apim | grep "\"status\": \"RUNNING\""
 ```
 
-Images >>> show objects created in apigee.. api product, environment, env group, sharedflow proxy.
 ![Image of screenshot](/media/operatorwithoverrides.png)
 
 
