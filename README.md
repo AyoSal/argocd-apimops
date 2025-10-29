@@ -135,4 +135,34 @@ Where GATEWAY_IP_ADDRESS is the ip address of the Gateway. HOST_NAME is the host
 The request should succeed and return a response similar to the following:
 
 ![Image of screenshot](/media/apikeyenforce.png)
- 
+
+
+ Test Quota Enforcement To test the quota enforcement defined in your APIM extension policy, send the request from the previous step to the Gateway ten times within the span of one minute.
+
+You can run the following script to generate the requests:
+
+    #!/bin/sh
+for i in $(seq 1 11); do
+    curl http://GATEWAY_IP_ADDRESS/get -H "Host: HOST_NAME" -H "x-api-key: API_KEY"
+    sleep 1
+done
+This action should trigger a quota violation and raise a fault similar to the following:
+
+    {"fault":{"faultstring":"Rate limit quota violation. Quota limit  exceeded. Identifier : _default","detail":{"errorcode":"policies.ratelimit.QuotaViolation"}}}
+
+
+Test REST Operations Enforcement To test the rest operations enforcement, use the following command to send a request to the Gateway using a URL that is not in the API operation set:
+
+    curl http://GATEWAY_IP_ADDRESS/post -H "Host: HOST_NAME" -H "x-api-key: API_KEY"
+The request should fail with a response similar to the following:
+
+    {"fault":{"faultstring":"Invalid ApiKey for given resource","detail":{"errorcode":"oauth.v2.InvalidApiKeyForGivenResource"}}}
+Congratulations!!! You have Successfully setup the Apigee APIM Operatpr!!!
+
+You can now clean up the resources created by deleting the argocd in a sequence. As of the time of creating this repo, the Apigee App and Apigee developer need to be creted manually, 
+
+1. Delete the phase 2 app in Argocd
+2. Delete the Apigee App and Developer in the Apigee UI
+3. Detach the Apigee environment from the Apigee instance
+4. Delete the other Argocd Apps for complete clean up
+
