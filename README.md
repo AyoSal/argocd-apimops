@@ -122,8 +122,9 @@ Last step is to creat the phase 2 application in argocd which contains the templ
 ![Image of screenshot](/media/all-apps-phase1-2.png)
 
 
+# Validation
 
-after this is done you can now begin some testing as shown in the links below.
+after this is done you can now begin some testing as shown below
 
 
 Test API Key Enforcement Now we have created an APP in Apigee and have an API Key, we can use the following command to send a request to the Gateway using the API key to test API key enforcement.
@@ -157,6 +158,8 @@ Test REST Operations Enforcement To test the rest operations enforcement, use th
 The request should fail with a response similar to the following:
 
     {"fault":{"faultstring":"Invalid ApiKey for given resource","detail":{"errorcode":"oauth.v2.InvalidApiKeyForGivenResource"}}}
+
+    
 Congratulations!!! You have Successfully setup the Apigee APIM Operatpr!!!
 
 You can now clean up the resources created by deleting the argocd in a sequence. As of the time of creating this repo, the Apigee App and Apigee developer need to be creted manually, 
