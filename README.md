@@ -125,4 +125,14 @@ Last step is to creat the phase 2 application in argocd which contains the templ
 
 after this is done you can now begin some testing as shown in the links below.
 
+
+Test API Key Enforcement Now we have created an APP in Apigee and have an API Key, we can use the following command to send a request to the Gateway using the API key to test API key enforcement.
+
+     curl http://GATEWAY_IP_ADDRESS/get -H "Host: HOST_NAME" -H "x-api-key: API_KEY"
+Where GATEWAY_IP_ADDRESS is the ip address of the Gateway. HOST_NAME is the hostname defined in the Gateways HTTPRoute/ API_KEY is the API Key value obtained from running script 8 above. You can retrieve the Gateway IP address using te follwoing command
+
+    kubectl get gateways.gateway.networking.k8s.io GATEWAY_NAME -o=jsonpath="{.status.addresses[0].value}"
+The request should succeed and return a response similar to the following:
+
+![Image of screenshot](/media/apikeyenforce.png)
  
