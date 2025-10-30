@@ -11,29 +11,37 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: apigee-apim-operator-helm
+  name: apigee-apim-operator-helm-appset
   namespace: argocd
 spec:
-  project: default
-  sources:
-  - repoURL: us-docker.pkg.dev/apigee-release/apigee-k8s-tooling-helm-charts
-    chart: apigee-apim-operator-helm
-    targetRevision: 1.0.0
-    helm:
-      releaseName: apigee-apim-operator-helm
-      valueFiles:
-      - $values/apigee-apim-operator-helm-overrides.yaml
-  - repoURL: sso://edge-internal/apigee-runtime-controller
-    targetRevision: HEAD
-    ref: values
-  destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: apim
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  generators:
+  - list:
+      elements:
+      - version: 1.0.0
+  template:
+    metadata:
+      name: apigee-apim-operator-helm
+      namespace: argocd
+    spec:
+      project: default
+      sources:
+      - repoURL: us-docker.pkg.dev/apigee-release/apigee-k8s-tooling-helm-charts
+        chart: apigee-apim-operator-helm
+        targetRevision: '{{version}}'
+        helm:
+          releaseName: apigee-apim-operator-helm
+          valueFiles:
+          - $values/helm-overrides/apigee-apim-operator-overrides.yaml
+      - repoURL: https://github.com/ayosal/argocd-apim-examples.git
+        targetRevision: HEAD
+        ref: values
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: apim
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
