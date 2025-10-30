@@ -167,5 +167,6 @@ You can now clean up the resources created by deleting the argocd in a sequence.
 1. Delete the phase 2 app in Argocd
 2. Delete the Apigee App and Developer in the Apigee UI
 3. Detach the Apigee environment from the Apigee instance
-4. Delete the other Argocd Apps for complete clean up
+4. Delete the shared flow - apim-
+5. Delete the other Argocd Apps for complete clean up
 
